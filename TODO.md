@@ -21,7 +21,7 @@ Tick items off as they're finished; add new ones as they come up.
       templates/pod|plane/isis-config.conf for stage 4)
 - [x] Move the current full templates to tests/fixtures/ (originals removed)
 - [x] `git init` (branch main, .gitignore for target/ and lab/)
-- [ ] Add git remote once the hosted repository is created and reorganized
+- [x] Add git remote (origin = github.com/riw777/topobuild, initial commit pushed)
 
 ## Stage 1 — FRR configuration generation (Rust)
 
