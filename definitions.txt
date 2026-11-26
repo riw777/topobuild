@@ -1,0 +1,149 @@
+basic definitions and numbering
+
+==
+pod
+ a set of 32 routers, each with 32 ports
+ 16 leaf routers and 16 spine routers
+
+plane
+ a set of 16 routers, each with 32 ports
+ the number of ports in use depends on the number of pods
+
+counting
+ all router identifiers, interfaces, and addresses are counted
+ starting from 1, rather than 0
+
+padding
+ when calculating identifiers, all single character numbers are
+ padded with a "0" to create a two character string (1 -> 01)
+ padding applies to router names and IPv6 addresses only
+ IPv4 addresses are never padded: 10.10.1.1, not 10.10.01.01
+ (leading zeros in an IPv4 octet are rejected or read as octal)
+
+device id
+ the four character string [pod or plane number][router number],
+ both padded to two characters
+ examples: pod 1 leaf 1 = 0101, pod 1 spine 33 = 0133,
+ plane 2 router 16 = 0216
+ the device id is used in names (le0101, sp0133, fa0216) and in IPv6
+ addresses, where it is written as-is into a hextet (0133 -> :0133:)
+
+==
+sizing
+
+all devices have 32 ports
+oversubscription is 1:1 everywhere
+
+the only size input is the number of pods (2-32)
+the number of planes is calculated: the minimum needed for the pod count
+
+pod
+ always 16 leaf routers + 16 spine routers
+ leaf: 16 ports to workloads, 16 ports to spines (one to each spine)
+ spine: 16 ports to leaves (one to each leaf), 16 ports to planes
+
+plane
+ always 16 routers
+ each spine connects to every router in its plane, one link each
+ so each pod has 16 x 16 = 256 links to the planes, matching its
+ 256 workload ports (1:1)
+
+planes = smallest power of two that is >= pods / 2
+ (the most pods a plane router can serve is 2 x planes, since each
+ pod uses 16 / planes ports on every plane router, and there are 32)
+
+ pods     planes  spines per pod  ports each pod uses  total routers
+                  in each plane   on a plane router
+ 2        1       16              16                   80
+ 3-4      2       8               8                    128-160
+ 5-8      4       4               4                    224-320
+ 9-16     8       2               2                    416-640
+ 17-32    16      1               1                    800-1280
+
+total routers = 32 x pods + 16 x planes
+all plane router ports are in use when pods = 2 x planes
+unused plane router ports don't affect oversubscription
+
+spine to plane wiring
+ spines per plane (s) = 16 / planes
+ spine number N (33-48) connects to plane ((N - 33) / s) + 1
+ spine uplink port 17-32 connects to plane router (port - 16)
+ that spine's position within its plane's block is j = ((N - 33) mod s) + 1
+ on the plane router, pod P's spine at position j uses port (P - 1) x s + j
+ (integer division throughout)
+
+==
+management network
+10.99.0.0/16
+3fff:99:99::/48
+
+==
+start numbering at 1 rather than 0
+
+==
+router identifiers
+
+leaf router
+le[pod number][leaf number]
+so the pattern is leXXYY, where numbers less than ten are padded with a 0 to the left to create a string
+pods are 1-32
+leaf router numbers are 1-16, assigned sequentially within the pod
+
+spine router
+sp[pod number][spine number]
+so the pattern is spXXYY, where numbers less than ten are padded with a 0 to the left to create a string
+spine router numbers are 33-48, assigned sequentially within the pod
+
+hosts (representing workloads devices, attached to leaf routers)
+wl[pod number][workload number]
+so the pattern is wlXXYY, where numbers less than ten are padded with a 0 to the left to create a string
+workload numbers are numbers starting at 65 for each pod, and assigned sequentially within the pod
+
+plane (or fabric) router
+fa[plane number][router number]
+so the pattern is faXXYY, where numbers less than ten are padded with a 0 to the left to create a string
+fabric router numbers are 1-16, assigned sequentially within the plane
+("fa" rather than "pl", because "l" is easily misread as "1")
+
+==
+ip addresses
+
+all IPv6 link subnets are /64; each end uses its own device id as the
+host part. names in [brackets] are device ids (see "device id" above)
+
+pod internal connections (leaf to spine)
+ethernet port on spine matches router number of leaf
+ethernet port on leaf = spine router number - 32
+3fff:1:[spine device id]:[leaf device id]::[local device id]/64
+ example: le0101 eth01 <-> sp0133 eth01
+   le0101  3fff:1:0133:0101::0101/64
+   sp0133  3fff:1:0133:0101::0133/64
+
+pod to fabric connections (spine to plane router)
+wiring is described in the "sizing" section above
+3fff:2:[spine device id]:[fabric device id]::[local device id]/64
+ example: sp0133 eth17 <-> fa0101 eth01
+   sp0133  3fff:2:0133:0101::0133/64
+   fa0101  3fff:2:0133:0101::0101/64
+
+workload connections (not yet settled)
+3fff:3:[leaf device id]:[interface number]::[local device number]/64
+
+pod loopback interface (leaf and spine)
+10.10.[pod].[router number]/32  (IPv4, not padded)
+3fff:10:10:[device id]::[device id]/128
+ example: sp0133  10.10.1.33/32, 3fff:10:10:0133::0133/128
+
+fabric loopback interface (plane router)
+10.11.[plane].[router number]/32  (IPv4, not padded)
+3fff:11:11:[device id]::[device id]/128
+ example: fa0216  10.11.2.16/32, 3fff:11:11:0216::0216/128
+
+==
+as numbers (deferred until the routing stage)
+stage 0/fabric  65001.[router]0
+stage 1/spine   65002.[pod]000
+stage 2/leaf    65003.[router]0
+the routing stage should be able to build these more than one way
+(e.g. unique AS per spine vs. one AS for all spines in a pod), so labs
+can show the effect of not following best practice

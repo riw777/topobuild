@@ -1,0 +1,652 @@
+# pod topology template
+#   tt     pod number
+#   b1-b4  this pod's four ports on each plane router
+#          (pod 1: 01-04, pod 2: 05-08 ... pod 8: 29-32)
+# Config paths are relative to the topology file in lab/.
+nodes:
+  lett01:
+    group: leaf
+    binds:
+      - pods/podtt/lett01.conf:/etc/frr/frr.conf
+  lett02:
+    group: leaf
+    binds:
+      - pods/podtt/lett02.conf:/etc/frr/frr.conf
+  lett03:
+    group: leaf
+    binds:
+      - pods/podtt/lett03.conf:/etc/frr/frr.conf
+  lett04:
+    group: leaf
+    binds:
+      - pods/podtt/lett04.conf:/etc/frr/frr.conf
+  lett05:
+    group: leaf
+    binds:
+      - pods/podtt/lett05.conf:/etc/frr/frr.conf
+  lett06:
+    group: leaf
+    binds:
+      - pods/podtt/lett06.conf:/etc/frr/frr.conf
+  lett07:
+    group: leaf
+    binds:
+      - pods/podtt/lett07.conf:/etc/frr/frr.conf
+  lett08:
+    group: leaf
+    binds:
+      - pods/podtt/lett08.conf:/etc/frr/frr.conf
+  lett09:
+    group: leaf
+    binds:
+      - pods/podtt/lett09.conf:/etc/frr/frr.conf
+  lett10:
+    group: leaf
+    binds:
+      - pods/podtt/lett10.conf:/etc/frr/frr.conf
+  lett11:
+    group: leaf
+    binds:
+      - pods/podtt/lett11.conf:/etc/frr/frr.conf
+  lett12:
+    group: leaf
+    binds:
+      - pods/podtt/lett12.conf:/etc/frr/frr.conf
+  lett13:
+    group: leaf
+    binds:
+      - pods/podtt/lett13.conf:/etc/frr/frr.conf
+  lett14:
+    group: leaf
+    binds:
+      - pods/podtt/lett14.conf:/etc/frr/frr.conf
+  lett15:
+    group: leaf
+    binds:
+      - pods/podtt/lett15.conf:/etc/frr/frr.conf
+  lett16:
+    group: leaf
+    binds:
+      - pods/podtt/lett16.conf:/etc/frr/frr.conf
+  sptt33:
+    group: spine
+    binds:
+      - pods/podtt/sptt33.conf:/etc/frr/frr.conf
+  sptt34:
+    group: spine
+    binds:
+      - pods/podtt/sptt34.conf:/etc/frr/frr.conf
+  sptt35:
+    group: spine
+    binds:
+      - pods/podtt/sptt35.conf:/etc/frr/frr.conf
+  sptt36:
+    group: spine
+    binds:
+      - pods/podtt/sptt36.conf:/etc/frr/frr.conf
+  sptt37:
+    group: spine
+    binds:
+      - pods/podtt/sptt37.conf:/etc/frr/frr.conf
+  sptt38:
+    group: spine
+    binds:
+      - pods/podtt/sptt38.conf:/etc/frr/frr.conf
+  sptt39:
+    group: spine
+    binds:
+      - pods/podtt/sptt39.conf:/etc/frr/frr.conf
+  sptt40:
+    group: spine
+    binds:
+      - pods/podtt/sptt40.conf:/etc/frr/frr.conf
+  sptt41:
+    group: spine
+    binds:
+      - pods/podtt/sptt41.conf:/etc/frr/frr.conf
+  sptt42:
+    group: spine
+    binds:
+      - pods/podtt/sptt42.conf:/etc/frr/frr.conf
+  sptt43:
+    group: spine
+    binds:
+      - pods/podtt/sptt43.conf:/etc/frr/frr.conf
+  sptt44:
+    group: spine
+    binds:
+      - pods/podtt/sptt44.conf:/etc/frr/frr.conf
+  sptt45:
+    group: spine
+    binds:
+      - pods/podtt/sptt45.conf:/etc/frr/frr.conf
+  sptt46:
+    group: spine
+    binds:
+      - pods/podtt/sptt46.conf:/etc/frr/frr.conf
+  sptt47:
+    group: spine
+    binds:
+      - pods/podtt/sptt47.conf:/etc/frr/frr.conf
+  sptt48:
+    group: spine
+    binds:
+      - pods/podtt/sptt48.conf:/etc/frr/frr.conf
+
+links:
+  # leaf to spine: leaf ethNN -> spine 32+NN, spine port = leaf number
+  - endpoints: ["lett01:eth01","sptt33:eth01"]
+  - endpoints: ["lett01:eth02","sptt34:eth01"]
+  - endpoints: ["lett01:eth03","sptt35:eth01"]
+  - endpoints: ["lett01:eth04","sptt36:eth01"]
+  - endpoints: ["lett01:eth05","sptt37:eth01"]
+  - endpoints: ["lett01:eth06","sptt38:eth01"]
+  - endpoints: ["lett01:eth07","sptt39:eth01"]
+  - endpoints: ["lett01:eth08","sptt40:eth01"]
+  - endpoints: ["lett01:eth09","sptt41:eth01"]
+  - endpoints: ["lett01:eth10","sptt42:eth01"]
+  - endpoints: ["lett01:eth11","sptt43:eth01"]
+  - endpoints: ["lett01:eth12","sptt44:eth01"]
+  - endpoints: ["lett01:eth13","sptt45:eth01"]
+  - endpoints: ["lett01:eth14","sptt46:eth01"]
+  - endpoints: ["lett01:eth15","sptt47:eth01"]
+  - endpoints: ["lett01:eth16","sptt48:eth01"]
+  - endpoints: ["lett02:eth01","sptt33:eth02"]
+  - endpoints: ["lett02:eth02","sptt34:eth02"]
+  - endpoints: ["lett02:eth03","sptt35:eth02"]
+  - endpoints: ["lett02:eth04","sptt36:eth02"]
+  - endpoints: ["lett02:eth05","sptt37:eth02"]
+  - endpoints: ["lett02:eth06","sptt38:eth02"]
+  - endpoints: ["lett02:eth07","sptt39:eth02"]
+  - endpoints: ["lett02:eth08","sptt40:eth02"]
+  - endpoints: ["lett02:eth09","sptt41:eth02"]
+  - endpoints: ["lett02:eth10","sptt42:eth02"]
+  - endpoints: ["lett02:eth11","sptt43:eth02"]
+  - endpoints: ["lett02:eth12","sptt44:eth02"]
+  - endpoints: ["lett02:eth13","sptt45:eth02"]
+  - endpoints: ["lett02:eth14","sptt46:eth02"]
+  - endpoints: ["lett02:eth15","sptt47:eth02"]
+  - endpoints: ["lett02:eth16","sptt48:eth02"]
+  - endpoints: ["lett03:eth01","sptt33:eth03"]
+  - endpoints: ["lett03:eth02","sptt34:eth03"]
+  - endpoints: ["lett03:eth03","sptt35:eth03"]
+  - endpoints: ["lett03:eth04","sptt36:eth03"]
+  - endpoints: ["lett03:eth05","sptt37:eth03"]
+  - endpoints: ["lett03:eth06","sptt38:eth03"]
+  - endpoints: ["lett03:eth07","sptt39:eth03"]
+  - endpoints: ["lett03:eth08","sptt40:eth03"]
+  - endpoints: ["lett03:eth09","sptt41:eth03"]
+  - endpoints: ["lett03:eth10","sptt42:eth03"]
+  - endpoints: ["lett03:eth11","sptt43:eth03"]
+  - endpoints: ["lett03:eth12","sptt44:eth03"]
+  - endpoints: ["lett03:eth13","sptt45:eth03"]
+  - endpoints: ["lett03:eth14","sptt46:eth03"]
+  - endpoints: ["lett03:eth15","sptt47:eth03"]
+  - endpoints: ["lett03:eth16","sptt48:eth03"]
+  - endpoints: ["lett04:eth01","sptt33:eth04"]
+  - endpoints: ["lett04:eth02","sptt34:eth04"]
+  - endpoints: ["lett04:eth03","sptt35:eth04"]
+  - endpoints: ["lett04:eth04","sptt36:eth04"]
+  - endpoints: ["lett04:eth05","sptt37:eth04"]
+  - endpoints: ["lett04:eth06","sptt38:eth04"]
+  - endpoints: ["lett04:eth07","sptt39:eth04"]
+  - endpoints: ["lett04:eth08","sptt40:eth04"]
+  - endpoints: ["lett04:eth09","sptt41:eth04"]
+  - endpoints: ["lett04:eth10","sptt42:eth04"]
+  - endpoints: ["lett04:eth11","sptt43:eth04"]
+  - endpoints: ["lett04:eth12","sptt44:eth04"]
+  - endpoints: ["lett04:eth13","sptt45:eth04"]
+  - endpoints: ["lett04:eth14","sptt46:eth04"]
+  - endpoints: ["lett04:eth15","sptt47:eth04"]
+  - endpoints: ["lett04:eth16","sptt48:eth04"]
+  - endpoints: ["lett05:eth01","sptt33:eth05"]
+  - endpoints: ["lett05:eth02","sptt34:eth05"]
+  - endpoints: ["lett05:eth03","sptt35:eth05"]
+  - endpoints: ["lett05:eth04","sptt36:eth05"]
+  - endpoints: ["lett05:eth05","sptt37:eth05"]
+  - endpoints: ["lett05:eth06","sptt38:eth05"]
+  - endpoints: ["lett05:eth07","sptt39:eth05"]
+  - endpoints: ["lett05:eth08","sptt40:eth05"]
+  - endpoints: ["lett05:eth09","sptt41:eth05"]
+  - endpoints: ["lett05:eth10","sptt42:eth05"]
+  - endpoints: ["lett05:eth11","sptt43:eth05"]
+  - endpoints: ["lett05:eth12","sptt44:eth05"]
+  - endpoints: ["lett05:eth13","sptt45:eth05"]
+  - endpoints: ["lett05:eth14","sptt46:eth05"]
+  - endpoints: ["lett05:eth15","sptt47:eth05"]
+  - endpoints: ["lett05:eth16","sptt48:eth05"]
+  - endpoints: ["lett06:eth01","sptt33:eth06"]
+  - endpoints: ["lett06:eth02","sptt34:eth06"]
+  - endpoints: ["lett06:eth03","sptt35:eth06"]
+  - endpoints: ["lett06:eth04","sptt36:eth06"]
+  - endpoints: ["lett06:eth05","sptt37:eth06"]
+  - endpoints: ["lett06:eth06","sptt38:eth06"]
+  - endpoints: ["lett06:eth07","sptt39:eth06"]
+  - endpoints: ["lett06:eth08","sptt40:eth06"]
+  - endpoints: ["lett06:eth09","sptt41:eth06"]
+  - endpoints: ["lett06:eth10","sptt42:eth06"]
+  - endpoints: ["lett06:eth11","sptt43:eth06"]
+  - endpoints: ["lett06:eth12","sptt44:eth06"]
+  - endpoints: ["lett06:eth13","sptt45:eth06"]
+  - endpoints: ["lett06:eth14","sptt46:eth06"]
+  - endpoints: ["lett06:eth15","sptt47:eth06"]
+  - endpoints: ["lett06:eth16","sptt48:eth06"]
+  - endpoints: ["lett07:eth01","sptt33:eth07"]
+  - endpoints: ["lett07:eth02","sptt34:eth07"]
+  - endpoints: ["lett07:eth03","sptt35:eth07"]
+  - endpoints: ["lett07:eth04","sptt36:eth07"]
+  - endpoints: ["lett07:eth05","sptt37:eth07"]
+  - endpoints: ["lett07:eth06","sptt38:eth07"]
+  - endpoints: ["lett07:eth07","sptt39:eth07"]
+  - endpoints: ["lett07:eth08","sptt40:eth07"]
+  - endpoints: ["lett07:eth09","sptt41:eth07"]
+  - endpoints: ["lett07:eth10","sptt42:eth07"]
+  - endpoints: ["lett07:eth11","sptt43:eth07"]
+  - endpoints: ["lett07:eth12","sptt44:eth07"]
+  - endpoints: ["lett07:eth13","sptt45:eth07"]
+  - endpoints: ["lett07:eth14","sptt46:eth07"]
+  - endpoints: ["lett07:eth15","sptt47:eth07"]
+  - endpoints: ["lett07:eth16","sptt48:eth07"]
+  - endpoints: ["lett08:eth01","sptt33:eth08"]
+  - endpoints: ["lett08:eth02","sptt34:eth08"]
+  - endpoints: ["lett08:eth03","sptt35:eth08"]
+  - endpoints: ["lett08:eth04","sptt36:eth08"]
+  - endpoints: ["lett08:eth05","sptt37:eth08"]
+  - endpoints: ["lett08:eth06","sptt38:eth08"]
+  - endpoints: ["lett08:eth07","sptt39:eth08"]
+  - endpoints: ["lett08:eth08","sptt40:eth08"]
+  - endpoints: ["lett08:eth09","sptt41:eth08"]
+  - endpoints: ["lett08:eth10","sptt42:eth08"]
+  - endpoints: ["lett08:eth11","sptt43:eth08"]
+  - endpoints: ["lett08:eth12","sptt44:eth08"]
+  - endpoints: ["lett08:eth13","sptt45:eth08"]
+  - endpoints: ["lett08:eth14","sptt46:eth08"]
+  - endpoints: ["lett08:eth15","sptt47:eth08"]
+  - endpoints: ["lett08:eth16","sptt48:eth08"]
+  - endpoints: ["lett09:eth01","sptt33:eth09"]
+  - endpoints: ["lett09:eth02","sptt34:eth09"]
+  - endpoints: ["lett09:eth03","sptt35:eth09"]
+  - endpoints: ["lett09:eth04","sptt36:eth09"]
+  - endpoints: ["lett09:eth05","sptt37:eth09"]
+  - endpoints: ["lett09:eth06","sptt38:eth09"]
+  - endpoints: ["lett09:eth07","sptt39:eth09"]
+  - endpoints: ["lett09:eth08","sptt40:eth09"]
+  - endpoints: ["lett09:eth09","sptt41:eth09"]
+  - endpoints: ["lett09:eth10","sptt42:eth09"]
+  - endpoints: ["lett09:eth11","sptt43:eth09"]
+  - endpoints: ["lett09:eth12","sptt44:eth09"]
+  - endpoints: ["lett09:eth13","sptt45:eth09"]
+  - endpoints: ["lett09:eth14","sptt46:eth09"]
+  - endpoints: ["lett09:eth15","sptt47:eth09"]
+  - endpoints: ["lett09:eth16","sptt48:eth09"]
+  - endpoints: ["lett10:eth01","sptt33:eth10"]
+  - endpoints: ["lett10:eth02","sptt34:eth10"]
+  - endpoints: ["lett10:eth03","sptt35:eth10"]
+  - endpoints: ["lett10:eth04","sptt36:eth10"]
+  - endpoints: ["lett10:eth05","sptt37:eth10"]
+  - endpoints: ["lett10:eth06","sptt38:eth10"]
+  - endpoints: ["lett10:eth07","sptt39:eth10"]
+  - endpoints: ["lett10:eth08","sptt40:eth10"]
+  - endpoints: ["lett10:eth09","sptt41:eth10"]
+  - endpoints: ["lett10:eth10","sptt42:eth10"]
+  - endpoints: ["lett10:eth11","sptt43:eth10"]
+  - endpoints: ["lett10:eth12","sptt44:eth10"]
+  - endpoints: ["lett10:eth13","sptt45:eth10"]
+  - endpoints: ["lett10:eth14","sptt46:eth10"]
+  - endpoints: ["lett10:eth15","sptt47:eth10"]
+  - endpoints: ["lett10:eth16","sptt48:eth10"]
+  - endpoints: ["lett11:eth01","sptt33:eth11"]
+  - endpoints: ["lett11:eth02","sptt34:eth11"]
+  - endpoints: ["lett11:eth03","sptt35:eth11"]
+  - endpoints: ["lett11:eth04","sptt36:eth11"]
+  - endpoints: ["lett11:eth05","sptt37:eth11"]
+  - endpoints: ["lett11:eth06","sptt38:eth11"]
+  - endpoints: ["lett11:eth07","sptt39:eth11"]
+  - endpoints: ["lett11:eth08","sptt40:eth11"]
+  - endpoints: ["lett11:eth09","sptt41:eth11"]
+  - endpoints: ["lett11:eth10","sptt42:eth11"]
+  - endpoints: ["lett11:eth11","sptt43:eth11"]
+  - endpoints: ["lett11:eth12","sptt44:eth11"]
+  - endpoints: ["lett11:eth13","sptt45:eth11"]
+  - endpoints: ["lett11:eth14","sptt46:eth11"]
+  - endpoints: ["lett11:eth15","sptt47:eth11"]
+  - endpoints: ["lett11:eth16","sptt48:eth11"]
+  - endpoints: ["lett12:eth01","sptt33:eth12"]
+  - endpoints: ["lett12:eth02","sptt34:eth12"]
+  - endpoints: ["lett12:eth03","sptt35:eth12"]
+  - endpoints: ["lett12:eth04","sptt36:eth12"]
+  - endpoints: ["lett12:eth05","sptt37:eth12"]
+  - endpoints: ["lett12:eth06","sptt38:eth12"]
+  - endpoints: ["lett12:eth07","sptt39:eth12"]
+  - endpoints: ["lett12:eth08","sptt40:eth12"]
+  - endpoints: ["lett12:eth09","sptt41:eth12"]
+  - endpoints: ["lett12:eth10","sptt42:eth12"]
+  - endpoints: ["lett12:eth11","sptt43:eth12"]
+  - endpoints: ["lett12:eth12","sptt44:eth12"]
+  - endpoints: ["lett12:eth13","sptt45:eth12"]
+  - endpoints: ["lett12:eth14","sptt46:eth12"]
+  - endpoints: ["lett12:eth15","sptt47:eth12"]
+  - endpoints: ["lett12:eth16","sptt48:eth12"]
+  - endpoints: ["lett13:eth01","sptt33:eth13"]
+  - endpoints: ["lett13:eth02","sptt34:eth13"]
+  - endpoints: ["lett13:eth03","sptt35:eth13"]
+  - endpoints: ["lett13:eth04","sptt36:eth13"]
+  - endpoints: ["lett13:eth05","sptt37:eth13"]
+  - endpoints: ["lett13:eth06","sptt38:eth13"]
+  - endpoints: ["lett13:eth07","sptt39:eth13"]
+  - endpoints: ["lett13:eth08","sptt40:eth13"]
+  - endpoints: ["lett13:eth09","sptt41:eth13"]
+  - endpoints: ["lett13:eth10","sptt42:eth13"]
+  - endpoints: ["lett13:eth11","sptt43:eth13"]
+  - endpoints: ["lett13:eth12","sptt44:eth13"]
+  - endpoints: ["lett13:eth13","sptt45:eth13"]
+  - endpoints: ["lett13:eth14","sptt46:eth13"]
+  - endpoints: ["lett13:eth15","sptt47:eth13"]
+  - endpoints: ["lett13:eth16","sptt48:eth13"]
+  - endpoints: ["lett14:eth01","sptt33:eth14"]
+  - endpoints: ["lett14:eth02","sptt34:eth14"]
+  - endpoints: ["lett14:eth03","sptt35:eth14"]
+  - endpoints: ["lett14:eth04","sptt36:eth14"]
+  - endpoints: ["lett14:eth05","sptt37:eth14"]
+  - endpoints: ["lett14:eth06","sptt38:eth14"]
+  - endpoints: ["lett14:eth07","sptt39:eth14"]
+  - endpoints: ["lett14:eth08","sptt40:eth14"]
+  - endpoints: ["lett14:eth09","sptt41:eth14"]
+  - endpoints: ["lett14:eth10","sptt42:eth14"]
+  - endpoints: ["lett14:eth11","sptt43:eth14"]
+  - endpoints: ["lett14:eth12","sptt44:eth14"]
+  - endpoints: ["lett14:eth13","sptt45:eth14"]
+  - endpoints: ["lett14:eth14","sptt46:eth14"]
+  - endpoints: ["lett14:eth15","sptt47:eth14"]
+  - endpoints: ["lett14:eth16","sptt48:eth14"]
+  - endpoints: ["lett15:eth01","sptt33:eth15"]
+  - endpoints: ["lett15:eth02","sptt34:eth15"]
+  - endpoints: ["lett15:eth03","sptt35:eth15"]
+  - endpoints: ["lett15:eth04","sptt36:eth15"]
+  - endpoints: ["lett15:eth05","sptt37:eth15"]
+  - endpoints: ["lett15:eth06","sptt38:eth15"]
+  - endpoints: ["lett15:eth07","sptt39:eth15"]
+  - endpoints: ["lett15:eth08","sptt40:eth15"]
+  - endpoints: ["lett15:eth09","sptt41:eth15"]
+  - endpoints: ["lett15:eth10","sptt42:eth15"]
+  - endpoints: ["lett15:eth11","sptt43:eth15"]
+  - endpoints: ["lett15:eth12","sptt44:eth15"]
+  - endpoints: ["lett15:eth13","sptt45:eth15"]
+  - endpoints: ["lett15:eth14","sptt46:eth15"]
+  - endpoints: ["lett15:eth15","sptt47:eth15"]
+  - endpoints: ["lett15:eth16","sptt48:eth15"]
+  - endpoints: ["lett16:eth01","sptt33:eth16"]
+  - endpoints: ["lett16:eth02","sptt34:eth16"]
+  - endpoints: ["lett16:eth03","sptt35:eth16"]
+  - endpoints: ["lett16:eth04","sptt36:eth16"]
+  - endpoints: ["lett16:eth05","sptt37:eth16"]
+  - endpoints: ["lett16:eth06","sptt38:eth16"]
+  - endpoints: ["lett16:eth07","sptt39:eth16"]
+  - endpoints: ["lett16:eth08","sptt40:eth16"]
+  - endpoints: ["lett16:eth09","sptt41:eth16"]
+  - endpoints: ["lett16:eth10","sptt42:eth16"]
+  - endpoints: ["lett16:eth11","sptt43:eth16"]
+  - endpoints: ["lett16:eth12","sptt44:eth16"]
+  - endpoints: ["lett16:eth13","sptt45:eth16"]
+  - endpoints: ["lett16:eth14","sptt46:eth16"]
+  - endpoints: ["lett16:eth15","sptt47:eth16"]
+  - endpoints: ["lett16:eth16","sptt48:eth16"]
+
+  # spine to plane: spines 33-36 -> plane 01, 37-40 -> 02, 41-44 -> 03, 45-48 -> 04
+  # spine eth17-32 -> plane routers 01-16; plane-router port = b[slot within block]
+  - endpoints: ["sptt33:eth17","fa0101:ethb1"]
+  - endpoints: ["sptt33:eth18","fa0102:ethb1"]
+  - endpoints: ["sptt33:eth19","fa0103:ethb1"]
+  - endpoints: ["sptt33:eth20","fa0104:ethb1"]
+  - endpoints: ["sptt33:eth21","fa0105:ethb1"]
+  - endpoints: ["sptt33:eth22","fa0106:ethb1"]
+  - endpoints: ["sptt33:eth23","fa0107:ethb1"]
+  - endpoints: ["sptt33:eth24","fa0108:ethb1"]
+  - endpoints: ["sptt33:eth25","fa0109:ethb1"]
+  - endpoints: ["sptt33:eth26","fa0110:ethb1"]
+  - endpoints: ["sptt33:eth27","fa0111:ethb1"]
+  - endpoints: ["sptt33:eth28","fa0112:ethb1"]
+  - endpoints: ["sptt33:eth29","fa0113:ethb1"]
+  - endpoints: ["sptt33:eth30","fa0114:ethb1"]
+  - endpoints: ["sptt33:eth31","fa0115:ethb1"]
+  - endpoints: ["sptt33:eth32","fa0116:ethb1"]
+  - endpoints: ["sptt34:eth17","fa0101:ethb2"]
+  - endpoints: ["sptt34:eth18","fa0102:ethb2"]
+  - endpoints: ["sptt34:eth19","fa0103:ethb2"]
+  - endpoints: ["sptt34:eth20","fa0104:ethb2"]
+  - endpoints: ["sptt34:eth21","fa0105:ethb2"]
+  - endpoints: ["sptt34:eth22","fa0106:ethb2"]
+  - endpoints: ["sptt34:eth23","fa0107:ethb2"]
+  - endpoints: ["sptt34:eth24","fa0108:ethb2"]
+  - endpoints: ["sptt34:eth25","fa0109:ethb2"]
+  - endpoints: ["sptt34:eth26","fa0110:ethb2"]
+  - endpoints: ["sptt34:eth27","fa0111:ethb2"]
+  - endpoints: ["sptt34:eth28","fa0112:ethb2"]
+  - endpoints: ["sptt34:eth29","fa0113:ethb2"]
+  - endpoints: ["sptt34:eth30","fa0114:ethb2"]
+  - endpoints: ["sptt34:eth31","fa0115:ethb2"]
+  - endpoints: ["sptt34:eth32","fa0116:ethb2"]
+  - endpoints: ["sptt35:eth17","fa0101:ethb3"]
+  - endpoints: ["sptt35:eth18","fa0102:ethb3"]
+  - endpoints: ["sptt35:eth19","fa0103:ethb3"]
+  - endpoints: ["sptt35:eth20","fa0104:ethb3"]
+  - endpoints: ["sptt35:eth21","fa0105:ethb3"]
+  - endpoints: ["sptt35:eth22","fa0106:ethb3"]
+  - endpoints: ["sptt35:eth23","fa0107:ethb3"]
+  - endpoints: ["sptt35:eth24","fa0108:ethb3"]
+  - endpoints: ["sptt35:eth25","fa0109:ethb3"]
+  - endpoints: ["sptt35:eth26","fa0110:ethb3"]
+  - endpoints: ["sptt35:eth27","fa0111:ethb3"]
+  - endpoints: ["sptt35:eth28","fa0112:ethb3"]
+  - endpoints: ["sptt35:eth29","fa0113:ethb3"]
+  - endpoints: ["sptt35:eth30","fa0114:ethb3"]
+  - endpoints: ["sptt35:eth31","fa0115:ethb3"]
+  - endpoints: ["sptt35:eth32","fa0116:ethb3"]
+  - endpoints: ["sptt36:eth17","fa0101:ethb4"]
+  - endpoints: ["sptt36:eth18","fa0102:ethb4"]
+  - endpoints: ["sptt36:eth19","fa0103:ethb4"]
+  - endpoints: ["sptt36:eth20","fa0104:ethb4"]
+  - endpoints: ["sptt36:eth21","fa0105:ethb4"]
+  - endpoints: ["sptt36:eth22","fa0106:ethb4"]
+  - endpoints: ["sptt36:eth23","fa0107:ethb4"]
+  - endpoints: ["sptt36:eth24","fa0108:ethb4"]
+  - endpoints: ["sptt36:eth25","fa0109:ethb4"]
+  - endpoints: ["sptt36:eth26","fa0110:ethb4"]
+  - endpoints: ["sptt36:eth27","fa0111:ethb4"]
+  - endpoints: ["sptt36:eth28","fa0112:ethb4"]
+  - endpoints: ["sptt36:eth29","fa0113:ethb4"]
+  - endpoints: ["sptt36:eth30","fa0114:ethb4"]
+  - endpoints: ["sptt36:eth31","fa0115:ethb4"]
+  - endpoints: ["sptt36:eth32","fa0116:ethb4"]
+  - endpoints: ["sptt37:eth17","fa0201:ethb1"]
+  - endpoints: ["sptt37:eth18","fa0202:ethb1"]
+  - endpoints: ["sptt37:eth19","fa0203:ethb1"]
+  - endpoints: ["sptt37:eth20","fa0204:ethb1"]
+  - endpoints: ["sptt37:eth21","fa0205:ethb1"]
+  - endpoints: ["sptt37:eth22","fa0206:ethb1"]
+  - endpoints: ["sptt37:eth23","fa0207:ethb1"]
+  - endpoints: ["sptt37:eth24","fa0208:ethb1"]
+  - endpoints: ["sptt37:eth25","fa0209:ethb1"]
+  - endpoints: ["sptt37:eth26","fa0210:ethb1"]
+  - endpoints: ["sptt37:eth27","fa0211:ethb1"]
+  - endpoints: ["sptt37:eth28","fa0212:ethb1"]
+  - endpoints: ["sptt37:eth29","fa0213:ethb1"]
+  - endpoints: ["sptt37:eth30","fa0214:ethb1"]
+  - endpoints: ["sptt37:eth31","fa0215:ethb1"]
+  - endpoints: ["sptt37:eth32","fa0216:ethb1"]
+  - endpoints: ["sptt38:eth17","fa0201:ethb2"]
+  - endpoints: ["sptt38:eth18","fa0202:ethb2"]
+  - endpoints: ["sptt38:eth19","fa0203:ethb2"]
+  - endpoints: ["sptt38:eth20","fa0204:ethb2"]
+  - endpoints: ["sptt38:eth21","fa0205:ethb2"]
+  - endpoints: ["sptt38:eth22","fa0206:ethb2"]
+  - endpoints: ["sptt38:eth23","fa0207:ethb2"]
+  - endpoints: ["sptt38:eth24","fa0208:ethb2"]
+  - endpoints: ["sptt38:eth25","fa0209:ethb2"]
+  - endpoints: ["sptt38:eth26","fa0210:ethb2"]
+  - endpoints: ["sptt38:eth27","fa0211:ethb2"]
+  - endpoints: ["sptt38:eth28","fa0212:ethb2"]
+  - endpoints: ["sptt38:eth29","fa0213:ethb2"]
+  - endpoints: ["sptt38:eth30","fa0214:ethb2"]
+  - endpoints: ["sptt38:eth31","fa0215:ethb2"]
+  - endpoints: ["sptt38:eth32","fa0216:ethb2"]
+  - endpoints: ["sptt39:eth17","fa0201:ethb3"]
+  - endpoints: ["sptt39:eth18","fa0202:ethb3"]
+  - endpoints: ["sptt39:eth19","fa0203:ethb3"]
+  - endpoints: ["sptt39:eth20","fa0204:ethb3"]
+  - endpoints: ["sptt39:eth21","fa0205:ethb3"]
+  - endpoints: ["sptt39:eth22","fa0206:ethb3"]
+  - endpoints: ["sptt39:eth23","fa0207:ethb3"]
+  - endpoints: ["sptt39:eth24","fa0208:ethb3"]
+  - endpoints: ["sptt39:eth25","fa0209:ethb3"]
+  - endpoints: ["sptt39:eth26","fa0210:ethb3"]
+  - endpoints: ["sptt39:eth27","fa0211:ethb3"]
+  - endpoints: ["sptt39:eth28","fa0212:ethb3"]
+  - endpoints: ["sptt39:eth29","fa0213:ethb3"]
+  - endpoints: ["sptt39:eth30","fa0214:ethb3"]
+  - endpoints: ["sptt39:eth31","fa0215:ethb3"]
+  - endpoints: ["sptt39:eth32","fa0216:ethb3"]
+  - endpoints: ["sptt40:eth17","fa0201:ethb4"]
+  - endpoints: ["sptt40:eth18","fa0202:ethb4"]
+  - endpoints: ["sptt40:eth19","fa0203:ethb4"]
+  - endpoints: ["sptt40:eth20","fa0204:ethb4"]
+  - endpoints: ["sptt40:eth21","fa0205:ethb4"]
+  - endpoints: ["sptt40:eth22","fa0206:ethb4"]
+  - endpoints: ["sptt40:eth23","fa0207:ethb4"]
+  - endpoints: ["sptt40:eth24","fa0208:ethb4"]
+  - endpoints: ["sptt40:eth25","fa0209:ethb4"]
+  - endpoints: ["sptt40:eth26","fa0210:ethb4"]
+  - endpoints: ["sptt40:eth27","fa0211:ethb4"]
+  - endpoints: ["sptt40:eth28","fa0212:ethb4"]
+  - endpoints: ["sptt40:eth29","fa0213:ethb4"]
+  - endpoints: ["sptt40:eth30","fa0214:ethb4"]
+  - endpoints: ["sptt40:eth31","fa0215:ethb4"]
+  - endpoints: ["sptt40:eth32","fa0216:ethb4"]
+  - endpoints: ["sptt41:eth17","fa0301:ethb1"]
+  - endpoints: ["sptt41:eth18","fa0302:ethb1"]
+  - endpoints: ["sptt41:eth19","fa0303:ethb1"]
+  - endpoints: ["sptt41:eth20","fa0304:ethb1"]
+  - endpoints: ["sptt41:eth21","fa0305:ethb1"]
+  - endpoints: ["sptt41:eth22","fa0306:ethb1"]
+  - endpoints: ["sptt41:eth23","fa0307:ethb1"]
+  - endpoints: ["sptt41:eth24","fa0308:ethb1"]
+  - endpoints: ["sptt41:eth25","fa0309:ethb1"]
+  - endpoints: ["sptt41:eth26","fa0310:ethb1"]
+  - endpoints: ["sptt41:eth27","fa0311:ethb1"]
+  - endpoints: ["sptt41:eth28","fa0312:ethb1"]
+  - endpoints: ["sptt41:eth29","fa0313:ethb1"]
+  - endpoints: ["sptt41:eth30","fa0314:ethb1"]
+  - endpoints: ["sptt41:eth31","fa0315:ethb1"]
+  - endpoints: ["sptt41:eth32","fa0316:ethb1"]
+  - endpoints: ["sptt42:eth17","fa0301:ethb2"]
+  - endpoints: ["sptt42:eth18","fa0302:ethb2"]
+  - endpoints: ["sptt42:eth19","fa0303:ethb2"]
+  - endpoints: ["sptt42:eth20","fa0304:ethb2"]
+  - endpoints: ["sptt42:eth21","fa0305:ethb2"]
+  - endpoints: ["sptt42:eth22","fa0306:ethb2"]
+  - endpoints: ["sptt42:eth23","fa0307:ethb2"]
+  - endpoints: ["sptt42:eth24","fa0308:ethb2"]
+  - endpoints: ["sptt42:eth25","fa0309:ethb2"]
+  - endpoints: ["sptt42:eth26","fa0310:ethb2"]
+  - endpoints: ["sptt42:eth27","fa0311:ethb2"]
+  - endpoints: ["sptt42:eth28","fa0312:ethb2"]
+  - endpoints: ["sptt42:eth29","fa0313:ethb2"]
+  - endpoints: ["sptt42:eth30","fa0314:ethb2"]
+  - endpoints: ["sptt42:eth31","fa0315:ethb2"]
+  - endpoints: ["sptt42:eth32","fa0316:ethb2"]
+  - endpoints: ["sptt43:eth17","fa0301:ethb3"]
+  - endpoints: ["sptt43:eth18","fa0302:ethb3"]
+  - endpoints: ["sptt43:eth19","fa0303:ethb3"]
+  - endpoints: ["sptt43:eth20","fa0304:ethb3"]
+  - endpoints: ["sptt43:eth21","fa0305:ethb3"]
+  - endpoints: ["sptt43:eth22","fa0306:ethb3"]
+  - endpoints: ["sptt43:eth23","fa0307:ethb3"]
+  - endpoints: ["sptt43:eth24","fa0308:ethb3"]
+  - endpoints: ["sptt43:eth25","fa0309:ethb3"]
+  - endpoints: ["sptt43:eth26","fa0310:ethb3"]
+  - endpoints: ["sptt43:eth27","fa0311:ethb3"]
+  - endpoints: ["sptt43:eth28","fa0312:ethb3"]
+  - endpoints: ["sptt43:eth29","fa0313:ethb3"]
+  - endpoints: ["sptt43:eth30","fa0314:ethb3"]
+  - endpoints: ["sptt43:eth31","fa0315:ethb3"]
+  - endpoints: ["sptt43:eth32","fa0316:ethb3"]
+  - endpoints: ["sptt44:eth17","fa0301:ethb4"]
+  - endpoints: ["sptt44:eth18","fa0302:ethb4"]
+  - endpoints: ["sptt44:eth19","fa0303:ethb4"]
+  - endpoints: ["sptt44:eth20","fa0304:ethb4"]
+  - endpoints: ["sptt44:eth21","fa0305:ethb4"]
+  - endpoints: ["sptt44:eth22","fa0306:ethb4"]
+  - endpoints: ["sptt44:eth23","fa0307:ethb4"]
+  - endpoints: ["sptt44:eth24","fa0308:ethb4"]
+  - endpoints: ["sptt44:eth25","fa0309:ethb4"]
+  - endpoints: ["sptt44:eth26","fa0310:ethb4"]
+  - endpoints: ["sptt44:eth27","fa0311:ethb4"]
+  - endpoints: ["sptt44:eth28","fa0312:ethb4"]
+  - endpoints: ["sptt44:eth29","fa0313:ethb4"]
+  - endpoints: ["sptt44:eth30","fa0314:ethb4"]
+  - endpoints: ["sptt44:eth31","fa0315:ethb4"]
+  - endpoints: ["sptt44:eth32","fa0316:ethb4"]
+  - endpoints: ["sptt45:eth17","fa0401:ethb1"]
+  - endpoints: ["sptt45:eth18","fa0402:ethb1"]
+  - endpoints: ["sptt45:eth19","fa0403:ethb1"]
+  - endpoints: ["sptt45:eth20","fa0404:ethb1"]
+  - endpoints: ["sptt45:eth21","fa0405:ethb1"]
+  - endpoints: ["sptt45:eth22","fa0406:ethb1"]
+  - endpoints: ["sptt45:eth23","fa0407:ethb1"]
+  - endpoints: ["sptt45:eth24","fa0408:ethb1"]
+  - endpoints: ["sptt45:eth25","fa0409:ethb1"]
+  - endpoints: ["sptt45:eth26","fa0410:ethb1"]
+  - endpoints: ["sptt45:eth27","fa0411:ethb1"]
+  - endpoints: ["sptt45:eth28","fa0412:ethb1"]
+  - endpoints: ["sptt45:eth29","fa0413:ethb1"]
+  - endpoints: ["sptt45:eth30","fa0414:ethb1"]
+  - endpoints: ["sptt45:eth31","fa0415:ethb1"]
+  - endpoints: ["sptt45:eth32","fa0416:ethb1"]
+  - endpoints: ["sptt46:eth17","fa0401:ethb2"]
+  - endpoints: ["sptt46:eth18","fa0402:ethb2"]
+  - endpoints: ["sptt46:eth19","fa0403:ethb2"]
+  - endpoints: ["sptt46:eth20","fa0404:ethb2"]
+  - endpoints: ["sptt46:eth21","fa0405:ethb2"]
+  - endpoints: ["sptt46:eth22","fa0406:ethb2"]
+  - endpoints: ["sptt46:eth23","fa0407:ethb2"]
+  - endpoints: ["sptt46:eth24","fa0408:ethb2"]
+  - endpoints: ["sptt46:eth25","fa0409:ethb2"]
+  - endpoints: ["sptt46:eth26","fa0410:ethb2"]
+  - endpoints: ["sptt46:eth27","fa0411:ethb2"]
+  - endpoints: ["sptt46:eth28","fa0412:ethb2"]
+  - endpoints: ["sptt46:eth29","fa0413:ethb2"]
+  - endpoints: ["sptt46:eth30","fa0414:ethb2"]
+  - endpoints: ["sptt46:eth31","fa0415:ethb2"]
+  - endpoints: ["sptt46:eth32","fa0416:ethb2"]
+  - endpoints: ["sptt47:eth17","fa0401:ethb3"]
+  - endpoints: ["sptt47:eth18","fa0402:ethb3"]
+  - endpoints: ["sptt47:eth19","fa0403:ethb3"]
+  - endpoints: ["sptt47:eth20","fa0404:ethb3"]
+  - endpoints: ["sptt47:eth21","fa0405:ethb3"]
+  - endpoints: ["sptt47:eth22","fa0406:ethb3"]
+  - endpoints: ["sptt47:eth23","fa0407:ethb3"]
+  - endpoints: ["sptt47:eth24","fa0408:ethb3"]
+  - endpoints: ["sptt47:eth25","fa0409:ethb3"]
+  - endpoints: ["sptt47:eth26","fa0410:ethb3"]
+  - endpoints: ["sptt47:eth27","fa0411:ethb3"]
+  - endpoints: ["sptt47:eth28","fa0412:ethb3"]
+  - endpoints: ["sptt47:eth29","fa0413:ethb3"]
+  - endpoints: ["sptt47:eth30","fa0414:ethb3"]
+  - endpoints: ["sptt47:eth31","fa0415:ethb3"]
+  - endpoints: ["sptt47:eth32","fa0416:ethb3"]
+  - endpoints: ["sptt48:eth17","fa0401:ethb4"]
+  - endpoints: ["sptt48:eth18","fa0402:ethb4"]
+  - endpoints: ["sptt48:eth19","fa0403:ethb4"]
+  - endpoints: ["sptt48:eth20","fa0404:ethb4"]
+  - endpoints: ["sptt48:eth21","fa0405:ethb4"]
+  - endpoints: ["sptt48:eth22","fa0406:ethb4"]
+  - endpoints: ["sptt48:eth23","fa0407:ethb4"]
+  - endpoints: ["sptt48:eth24","fa0408:ethb4"]
+  - endpoints: ["sptt48:eth25","fa0409:ethb4"]
+  - endpoints: ["sptt48:eth26","fa0410:ethb4"]
+  - endpoints: ["sptt48:eth27","fa0411:ethb4"]
+  - endpoints: ["sptt48:eth28","fa0412:ethb4"]
+  - endpoints: ["sptt48:eth29","fa0413:ethb4"]
+  - endpoints: ["sptt48:eth30","fa0414:ethb4"]
+  - endpoints: ["sptt48:eth31","fa0415:ethb4"]
+  - endpoints: ["sptt48:eth32","fa0416:ethb4"]
